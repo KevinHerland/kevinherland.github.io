@@ -24,7 +24,19 @@
     .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;padding:24px}
     .card{grid-column:span 12;background:var(--card);border:1px solid #1f2a35;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     @media(min-width:720px){.card{grid-column:span 6}}
-    .card .media{background:#0e141b;text-align:center;padding:6px 0;}
+
+    /* --- Thumbnail alanı küçültüldü (Çözüm A) --- */
+    .card .media{
+      background:#0e141b;
+      text-align:center;
+      padding:0;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      height:clamp(120px,22vw,220px);
+      border-bottom:1px solid #1f2a35;
+    }
+
     .thumb{display:inline-block;max-width:420px;width:100%;}
     .thumb img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #1f2a35;}
     .content{padding:18px 18px 16px}
@@ -62,7 +74,7 @@
 
   <section class="hero container">
     <div class="kicker">Maya Bake Tools</div>
-    <h2>World‑Space baking utilities for Autodesk Maya</h2>
+    <h2>World-Space baking utilities for Autodesk Maya</h2>
     <p>Catalog of my Maya tools. GitHub is the showcase; Gumroad is the shop.</p>
   </section>
 
@@ -81,7 +93,7 @@
           <h3>wsBakeTool</h3>
           <span class="ver">v2.0</span>
         </div>
-        <p class="desc">Converts motion into clean transform keys. Modes: 1) Capture world‑space motion from parent hierarchy (same as v1.0), 2) Joint‑solve from SkinCluster. Then transfer the baked motion from a locator back to any object.</p>
+        <p class="desc">Converts motion into clean transform keys. Modes: 1) Capture world-space motion from parent hierarchy (same as v1.0), 2) Joint-solve from SkinCluster. Then transfer the baked motion from a locator back to any object.</p>
         <div class="buttons">
           <a class="btn primary" href="https://herlandia90.gumroad.com/l/dqlkhk" target="_blank" rel="noopener">Get v2.0 on Gumroad</a>
         </div>
@@ -102,7 +114,7 @@
           <h3>wsBakeTool</h3>
           <span class="ver">v1.0</span>
         </div>
-        <p class="desc">World Space Bake Tool v1.0 captures the world‑space motion of child object(s) and transfers this motion back to them after they are unparented in Maya.</p>
+        <p class="desc">World Space Bake Tool v1.0 captures the world-space motion of child object(s) and transfers this motion back to them after they are unparented in Maya.</p>
         <div class="buttons">
           <a class="btn primary" href="https://herlandia90.gumroad.com/l/svnmi" target="_blank" rel="noopener">Get it v1.0 on Gumroad FREE</a>
         </div>
@@ -113,13 +125,13 @@
   <section class="container" id="notes" style="padding:0 24px 24px">
     <h3 style="margin:12px 0 8px">Notes / When It Works Best</h3>
     <div class="note">
-      This approach works best for <strong>rigid or semi‑rigid objects</strong> that should not deform — such as helmets, armor plates, props, or mechanical parts bound to character joints. It accurately captures world‑space motion and bakes it back to a clean transform.
+      This approach works best for <strong>rigid or semi-rigid objects</strong> that should not deform — such as helmets, armor plates, props, or mechanical parts bound to character joints. It accurately captures world-space motion and bakes it back to a clean transform.
     </div>
     <div class="note">
-      If the mesh is <strong>highly deforming</strong> (soft skin, muscles), a single transform cannot perfectly represent its motion. In these cases, attach a <em>locator</em> to the surface or to a representative joint using a constraint/follicle/pointOnPoly, bake that locator’s motion, and then re‑apply it to the object.
+      If the mesh is <strong>highly deforming</strong> (soft skin, muscles), a single transform cannot perfectly represent its motion. In these cases, attach a <em>locator</em> to the surface or to a representative joint using a constraint/follicle/pointOnPoly, bake that locator’s motion, and then re-apply it to the object.
     </div>
 
-    <h4 style="margin:18px 0 8px">Pre‑flight Checklist</h4>
+    <h4 style="margin:18px 0 8px">Pre-flight Checklist</h4>
     <ul class="muted" style="margin:0 0 8px 18px">
       <li>Unparent or unbind the object if it is currently parented or skinned to a rig.</li>
       <li>Make sure all transform channels are <strong>unlocked</strong> before running the tool.</li>
