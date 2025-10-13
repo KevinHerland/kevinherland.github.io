@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Maya tools by Kevin Herland. World Space Bake Tool series and more." />
   <style>
     :root{
-      --bg:#0b0f14; --card:#131a22; --accent:#4da3ff; --text:#e9f0f7; --muted:#9fb3c8;
+      --bg:#0b0f14; --card:#131a22; --accent:#4da3ff; --text:#e9f0f7; --muted:#9fb3c8; --ok:#21c27a;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
@@ -24,21 +24,9 @@
     .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;padding:24px}
     .card{grid-column:span 12;background:var(--card);border:1px solid #1f2a35;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     @media(min-width:720px){.card{grid-column:span 6}}
-    .media { background:#0e141b; text-align:center; padding:4px 0; }
-.media {
-  background:#0e141b;
-  text-align:center;
-  padding:6px 0;
-}
-
-.media img {
-  width:55%;           /* or %60, ayarlanabilir */
-  height:auto;          /* doğal oran korunur */
-  border-radius:10px;
-  border:1px solid #1f2a35;
-  object-fit:contain;   /* sığdır ama kırpma yok */
-  aspect-ratio:auto;    /* oranı kendi boyutuna göre */
-}
+    .card .media{background:#0e141b;text-align:center;padding:6px 0;}
+    .thumb{display:inline-block;max-width:420px;width:100%;}
+    .thumb img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #1f2a35;}
     .content{padding:18px 18px 16px}
     .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
     .tag{font-size:12px;color:#cfe1f5;background:#1a2633;border:1px solid #2a3a4b;padding:3px 8px;border-radius:999px}
@@ -51,10 +39,12 @@
     .btn:hover{background:#1c2a38}
     .btn.primary{background:var(--accent);border-color:#6bb2ff;color:#001324}
     .btn.primary:hover{background:#78baff}
+    .btn.ok{background:#1a3b2c;border-color:#2d5c45;color:#a6f3cd}
     footer{padding:32px 24px;color:var(--muted);border-top:1px solid #1f2a35;margin-top:24px}
     .muted{color:var(--muted)}
     .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#77a7d8}
     .note{background:#0f151c;border:1px solid #1f2a35;border-radius:12px;padding:14px;margin-top:10px;color:#c7d7ea}
+    code.inline{background:#0f151c;border:1px solid #1f2a35;border-radius:6px;padding:2px 6px}
   </style>
 </head>
 <body>
@@ -72,17 +62,14 @@
 
   <section class="hero container">
     <div class="kicker">Maya Bake Tools</div>
-    <h2>World-Space baking utilities for Autodesk Maya</h2>
+    <h2>World‑Space baking utilities for Autodesk Maya</h2>
     <p>Catalog of my Maya tools. GitHub is the showcase; Gumroad is the shop.</p>
   </section>
 
   <main class="grid container" id="tools">
-
     <!-- CARD — WS Bake Tool v2.0 -->
     <article class="card">
-      <div class="media">
-        <img src="./images/BakeTool2_0_Preview1.png" alt="wsBakeTool v2.0 preview">
-      </div>
+      <div class="media" style="background-image:url('./images/BakeTool2_0_Preview1.png');"></div>
       <div class="content">
         <div class="tagbar">
           <span class="tag">Maya</span>
@@ -94,7 +81,7 @@
           <h3>wsBakeTool</h3>
           <span class="ver">v2.0</span>
         </div>
-        <p class="desc">Converts motion into clean transform keys. Modes: 1) Capture world-space motion from parent hierarchy (same as v1.0), 2) Joint-solve from SkinCluster. Then transfer the baked motion from a locator back to any object.</p>
+        <p class="desc">Converts motion into clean transform keys. Modes: 1) Capture world‑space motion from parent hierarchy (same as v1.0), 2) Joint‑solve from SkinCluster. Then transfer the baked motion from a locator back to any object.</p>
         <div class="buttons">
           <a class="btn primary" href="https://herlandia90.gumroad.com/l/dqlkhk" target="_blank" rel="noopener">Get v2.0 on Gumroad</a>
         </div>
@@ -103,9 +90,7 @@
 
     <!-- CARD — WS Bake Tool v1.0 -->
     <article class="card">
-      <div class="media">
-        <img src="./images/BakeTool1_0_Preview.jpg" alt="wsBakeTool v1.0 preview">
-      </div>
+      <div class="media" style="background-image:url('./images/BakeTool1_0_Preview.jpg');"></div>
       <div class="content">
         <div class="tagbar">
           <span class="tag">Maya</span>
@@ -117,25 +102,24 @@
           <h3>wsBakeTool</h3>
           <span class="ver">v1.0</span>
         </div>
-        <p class="desc">World Space Bake Tool v1.0 captures the world-space motion of child object(s) and transfers this motion back to them after they are unparented in Maya.</p>
+        <p class="desc">World Space Bake Tool v1.0 captures the world‑space motion of child object(s) and transfers this motion back to them after they are unparented in Maya.</p>
         <div class="buttons">
           <a class="btn primary" href="https://herlandia90.gumroad.com/l/svnmi" target="_blank" rel="noopener">Get it v1.0 on Gumroad FREE</a>
         </div>
       </div>
     </article>
-
   </main>
 
   <section class="container" id="notes" style="padding:0 24px 24px">
     <h3 style="margin:12px 0 8px">Notes / When It Works Best</h3>
     <div class="note">
-      This approach works best for <strong>rigid or semi-rigid objects</strong> that should not deform — such as helmets, armor plates, props, or mechanical parts bound to character joints.
+      This approach works best for <strong>rigid or semi‑rigid objects</strong> that should not deform — such as helmets, armor plates, props, or mechanical parts bound to character joints. It accurately captures world‑space motion and bakes it back to a clean transform.
     </div>
     <div class="note">
-      If the mesh is <strong>highly deforming</strong> (soft skin, muscles), a single transform cannot perfectly represent its motion. In these cases, attach a <em>locator</em> to the surface or to a representative joint using a constraint/follicle/pointOnPoly, bake that locator’s motion, and then re-apply it to the object.
+      If the mesh is <strong>highly deforming</strong> (soft skin, muscles), a single transform cannot perfectly represent its motion. In these cases, attach a <em>locator</em> to the surface or to a representative joint using a constraint/follicle/pointOnPoly, bake that locator’s motion, and then re‑apply it to the object.
     </div>
 
-    <h4 style="margin:18px 0 8px">Pre-flight Checklist</h4>
+    <h4 style="margin:18px 0 8px">Pre‑flight Checklist</h4>
     <ul class="muted" style="margin:0 0 8px 18px">
       <li>Unparent or unbind the object if it is currently parented or skinned to a rig.</li>
       <li>Make sure all transform channels are <strong>unlocked</strong> before running the tool.</li>
