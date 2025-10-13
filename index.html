@@ -25,13 +25,19 @@
     .card{grid-column:span 12;background:var(--card);border:1px solid #1f2a35;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     @media(min-width:720px){.card{grid-column:span 6}}
     .media { background:#0e141b; text-align:center; padding:4px 0; }
+.media {
+  background:#0e141b;
+  text-align:center;
+  padding:6px 0;
+}
+
 .media img {
-  width:50%;
-  max-width:360px;
-  max-height:140px;
-  height:auto;
+  width:55%;           /* or %60, ayarlanabilir */
+  height:auto;          /* doğal oran korunur */
   border-radius:10px;
   border:1px solid #1f2a35;
+  object-fit:contain;   /* sığdır ama kırpma yok */
+  aspect-ratio:auto;    /* oranı kendi boyutuna göre */
 }
     .content{padding:18px 18px 16px}
     .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
