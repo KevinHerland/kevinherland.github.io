@@ -1,143 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kevin Herland — Utilities for Autodesk Maya 2025x and 2026x</title>
-  <meta name="description" content="Utilities for Autodesk Maya 2025x and 2026x by Kevin Herland. World Space Bake Tool series and more." />
-  <style>
-    :root{
-      --bg:#0b0f14; --card:#131a22; --accent:#4da3ff; --text:#e9f0f7; --muted:#9fb3c8; --ok:#21c27a;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,15,20,.95),rgba(11,15,20,.8));backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #1f2a35;z-index:10}
-    .container{max-width:1080px;margin:0 auto;padding:24px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .nav h1{font-size:20px;margin:0;font-weight:700}
-    .nav .links{display:flex;gap:16px;align-items:center}
-    .hero{padding:48px 24px 24px}
-    .hero h2{font-size:36px;margin:0 0 8px}
-    .hero p{margin:0;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;padding:24px}
-    .card{grid-column:span 12;background:var(--card);border:1px solid #1f2a35;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.25)}
-    @media(min-width:720px){.card{grid-column:span 6}}
-
-    /* Thumbnail alanı */
-    .card .media{
-      background:#0e141b;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px;
-      height:clamp(100px,18vw,180px);
-      border-bottom:1px solid #1f2a35;
-    }
-    .media img.thumb{
-      max-width:100%;
-      max-height:100%;
-      width:auto;
-      height:auto;
-      display:block;
-      border-radius:10px;
-      border:1px solid #1f2a35;
-      object-fit:contain;
-    }
-
-    .content{padding:18px 18px 16px}
-    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
-    .tag{font-size:12px;color:#cfe1f5;background:#1a2633;border:1px solid #2a3a4b;padding:3px 8px;border-radius:999px}
-    .title{display:flex;align-items:center;justify-content:space-between;gap:8px}
-    .title h3{margin:0;font-size:18px}
-    .ver{font-size:12px;color:#b6d2ef;background:#173250;border:1px solid #244e78;padding:2px 8px;border-radius:6px}
-    .desc{color:var(--muted);margin:8px 0 14px}
-    .buttons{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid #2a3a4b;background:#16202b;color:#eaf3ff;text-decoration:none;font-weight:600}
-    .btn:hover{background:#1c2a38}
-    .btn.primary{background:var(--accent);border-color:#6bb2ff;color:#001324}
-    .btn.primary:hover{background:#78baff}
-    .btn.ok{background:#1a3b2c;border-color:#2d5c45;color:#a6f3cd}
-    footer{padding:32px 24px;color:var(--muted);border-top:1px solid #1f2a35;margin-top:24px}
-    .muted{color:var(--muted)}
-    .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#77a7d8}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <h1>Kevin Herland</h1>
-      <div class="links">
-        <a href="#tools">Tools</a>
-        <a href="https://github.com/kevinherland" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://herlandia90.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
-      </div>
+<!-- CARD — Camera Shake Bake Tool v1.0 -->
+<article class="card">
+  <div class="media">
+    <img class="thumb" src="./images/Camera_Shake_Bake_Tool_v1_pre.png" alt="Camera Shake Bake Tool v1.0 preview" loading="lazy" decoding="async">
+  </div>
+  <div class="content">
+    <div class="tagbar">
+      <span class="tag">Maya</span>
+      <span class="tag">Camera</span>
+      <span class="tag">Shake</span>
+      <span class="tag">Bake</span>
     </div>
-  </header>
-
-  <section class="hero container">
-    <h2>Utilities for Autodesk Maya 2025x and 2026x</h2>
-    <div class="kicker">Maya Bake Tools</div>
-    <p>Catalog of my Maya tools. GitHub is the showcase; Gumroad is the shop.</p>
-  </section>
-
-  <main class="grid container" id="tools">
-    <!-- CARD — WS Bake Tool v2.0 -->
-    <article class="card">
-      <div class="media">
-        <img class="thumb" src="./images/BakeTool2_0_Preview1.png" alt="wsBakeTool v2.0 preview" loading="lazy" decoding="async">
-      </div>
-      <div class="content">
-        <div class="tagbar">
-          <span class="tag">Maya</span>
-          <span class="tag">Animation</span>
-          <span class="tag">Bake</span>
-          <span class="tag">World Space</span>
-        </div>
-        <div class="title">
-          <h3>wsBakeTool</h3>
-          <span class="ver">v2.0</span>
-        </div>
-        <p class="desc">Converts motion into clean transform keys. Modes: 1) Capture world-space motion from parent hierarchy (same as v1.0), 2) Capture — Finds which joints influence a mesh that moves based on a joint hierarchy and captures the motion of the most dominant joint to a locator. If the mesh is driven by multiple joints, it can optionally calculate the average motion of those joints and temporarily copy it to a locator.
-Then,the motion from the locator can be baked back onto the original mesh or onto a clean duplicate of it.Result: the same animation, but without joints.</p>
-        <div class="buttons">
-          <a class="btn primary" href="https://herlandia90.gumroad.com/l/dqlkhk" target="_blank" rel="noopener">Get v2.0 on Gumroad</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- CARD — WS Bake Tool v1.0 -->
-    <article class="card">
-      <div class="media">
-        <img class="thumb" src="./images/BakeTool1_0_Preview.jpg" alt="wsBakeTool v1.0 preview" loading="lazy" decoding="async">
-      </div>
-      <div class="content">
-        <div class="tagbar">
-          <span class="tag">Maya</span>
-          <span class="tag">Animation</span>
-          <span class="tag">Bake</span>
-          <span class="tag">World Space</span>
-        </div>
-        <div class="title">
-          <h3>wsBakeTool</h3>
-          <span class="ver">v1.0</span>
-        </div>
-        <p class="desc">World-Space Bake Tool v1.0 captures the world-space motion of child object(s) and transfers this motion back to them after they are unparented in Maya.</p>
-        <div class="buttons">
-          <a class="btn primary" href="https://herlandia90.gumroad.com/l/svnmi" target="_blank" rel="noopener">Get it v1.0 on Gumroad FREE</a>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div>© <span id="y"></span> Kevin Herland · <a href="mailto:">Contact</a> · <a href="https://herlandia90.gumroad.com" target="_blank" rel="noopener">Gumroad Store</a></div>
+    <div class="title">
+      <h3>Camera Shake Bake Tool</h3>
+      <span class="ver">v1.0</span>
     </div>
-  </footer>
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+    <p class="desc">
+      Bake Maya’s “Enable Shake” camera offsets into real <em>rotate</em> keys so you can export the exact shake to game engines (Unreal, Unity) or any DCC.
+    </p>
+    <div class="buttons">
+      <!-- Bağlantını ekle -->
+      <a class="btn primary" href="#" target="_blank" rel="noopener">Get v1.0</a>
+    </div>
+  </div>
+</article>
